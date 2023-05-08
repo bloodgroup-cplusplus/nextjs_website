@@ -32,3 +32,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+//Data Fetching 
+// Next js provides three ways for data fetching 
+// 1. SSR (Server Side Rendering)
+// 2. SSG (Static Site Generation)
+// 3 . ISR(Incremental Static Generation)
+
+
+// to do an SSR 
+// we use the cache no store fuction 
+
+async function Page( {params})
+{
+    const rees = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`,
+    {cache:'no store'}
+    );
+
+    const data = await res.json()
+}
+
+// if we don't use cache no store than by default it uses ssr 
