@@ -62,3 +62,32 @@ const res = await fetch(
     {next:{revalidate:10}}
 )
 const data= await res.json()
+
+//Next.js supports the following http methods 
+// 1 . GET: Retrives data or resources from the server 
+// 2 . POST: Submits data to the server to create a new resource. 
+// 3. PUT: Updates or replaces an existing resource to the server. 
+// 4. DELETE
+// 5. HEAD 
+// 6. OPTIONS
+// PATCH 
+
+// We can define Metadata in two ways: Static and Dynamic 
+//1 Static Modification 
+//2 Dynamic Modification 
+
+// This is an example of static metadata
+
+export const metadata = {
+    title:"Home",
+};
+
+
+// this is an example of dynamic metadata 
+
+export async function generateMetaData({params, searchParams})
+{
+    const product = await getProduct(params.id);
+    return {title:product.title};
+}
+
