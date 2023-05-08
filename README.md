@@ -56,3 +56,9 @@ async function Page( {params})
 }
 
 // if we don't use cache no store than by default it uses ssr 
+// ISR looks like this 
+const res = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${params.id}`,
+    {next:{revalidate:10}}
+)
+const data= await res.json()
