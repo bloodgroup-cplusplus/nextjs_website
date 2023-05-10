@@ -1,7 +1,6 @@
 import "../styles/globals.css"
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import Nav from "@/components/Nav"
 
 export const metadata = {
   title: 'Promptopia',
@@ -15,6 +14,7 @@ export default function RootLayout({ children }) {
         <div className="main">
           <div className="gradient"/>
           <main className="app">
+            <Nav/>
             {children}
           </main>
         </div>
