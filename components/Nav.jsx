@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import {signIn,signOut,useSession,getProviders} from "next-auth/react"
 
 const Nav = () => {
-    const isUserLoggedIn = false
+    const isUserLoggedIn = true
     const [providers,setProviders] = useState(null)
     useEffect(()=>{
         const setProviders = async()=>{
@@ -61,6 +61,37 @@ const Nav = () => {
             )}
 
         </div>
+
+        {/* Mobile Navigation */}
+        <div className='sm:hidden flex relative'>
+            {isUserLoggedIn ?(
+                <div className='flex'>
+                <Image 
+                    src="/assets/images/logo.svg"
+                    width={39}
+                    height={37}
+                    className="rounded-full"
+                    alt="profile"
+                    onClick={()=>{}}
+                />
+            </div>
+                    
+            ):(
+
+                <>
+                {providers && Object.values(providers).map((provider)=>(
+                    <button type="button" key={provider.name} onClick={()=>signIn(provider.id)}
+                    className="black_btn">
+                        SignIn
+
+                    </button>
+                ))}
+
+                </>
+            )}
+        </div>
+
+
     </nav>
   )
 }
